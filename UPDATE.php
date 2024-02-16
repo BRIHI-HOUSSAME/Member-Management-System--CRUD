@@ -9,7 +9,7 @@ try {
 
     echo "<form method='post'>";
     echo "<table border='1'>";
-    echo "<tr><th>Matricule</th><th>Nom</th><th>Prenom</th><th>Date De Naissance</th><th>Fonction</th><th>Salaire</th><th>Service</th><th>UPDATE</th></tr>";
+    echo "<tr><th>Matricule</th><th>Prenom</th><th>Nom</th><th>Date De Naissance</th><th>Fonction</th><th>Salaire</th><th>Service</th><th>dateEmbauche</th><th>UPDATE</th></tr>";
 
     if (isset($_GET['Matricule'])) {
         $Matricule = $_GET['Matricule'];
@@ -26,7 +26,8 @@ try {
             echo "<td><input type='text' name='fonction' value='" . $row['fonction'] . "'></td>";
             echo "<td><input type='text' name='salaire' value='" . $row['salaire'] . "'></td>";
             echo "<td><input type='text' name='nomService' value='" . $row['nomService'] . "'></td>";                
-            echo "<td><input type='submit' name='UPDATE_DON' value='DONE'></td>";
+            echo "<td><input type='text' name='dateEmbauche' value='" . $row['dateEmbauche'] . "'></td>";
+            echo "<td><input type='submit' name='UPDATE_DONE' value='DONE'></td>";
             echo "</tr>";
         }
     }  
@@ -37,35 +38,29 @@ try {
 } catch (PDOException $e) {
     echo 'failed ' . $e->getMessage();
 }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $dateDeNaissance = $_POST['dateDeNaissance'];
     $fonction = $_POST['fonction'];
     $salaire = $_POST['salaire'];
+    $dateEmbauche = $_POST['dateEmbauche'];
     $nomService = $_POST['nomService'];
+    // $Matricule = $_GET['Matricule']; 
 
-    
-    $updateDATA = $DB->prepare("UPDATE employe SET nom = :nom, prenom = :prenom, dateDeNaissance = :dateDeNaissance, fonction = :fonction, salaire = :salaire WHERE matricule = :Matricule");
+    $updateDATA = $DB->prepare("UPDATE employe SET nom = :nom, prenom = :prenom, dateDeNaissance = :dateDeNaissance, fonction = :fonction, salaire = :salaire, dateEmbauche = :dateEmbauche WHERE matricule = :Matricule");
     $updateDATA->bindParam(':nom', $nom);
     $updateDATA->bindParam(':prenom', $prenom);
     $updateDATA->bindParam(':dateDeNaissance', $dateDeNaissance);
     $updateDATA->bindParam(':fonction', $fonction);
     $updateDATA->bindParam(':salaire', $salaire);
+    $updateDATA->bindParam(':dateEmbauche', $dateEmbauche);
+    $updateDATA->bindParam(':nomService', $nomService);
     $updateDATA->bindParam(':Matricule', $Matricule);
     $updateDATA->execute();
 
-
     header("Location: USERS.php"); 
     exit();
- 
-
 }
-
-
-
-
-
-
-
 ?>
