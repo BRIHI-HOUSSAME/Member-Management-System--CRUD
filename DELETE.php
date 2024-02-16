@@ -15,7 +15,7 @@ try {
         $statement->bindParam(':Matricule', $Matricule);
         $statement->execute();
 
-        header("location: SQL.php");
+        header("location: USERS.php");
         exit;
     }
 } catch (PDOException $e) {

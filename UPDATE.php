@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $updateDATA->execute();
 
 
-    header("Location: SQL.php"); 
+    header("Location: USERS.php"); 
     exit();
  
 

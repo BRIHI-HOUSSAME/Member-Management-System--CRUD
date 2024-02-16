@@ -10,7 +10,7 @@
         $DATA = $DB->prepare("SELECT * FROM employe INNER JOIN service ON employe.IdService = service.IdService");
         $DATA->execute();
 
-        echo "<table border='1'>";
+        echo "<table border='1'style='display: flex; justify-content: center; '>";
         echo "<tr><th>Matricule</th><th>Nom</th><th>Prenom</th><th>Date De Naissance</th><th>Fonction</th><th>Salaire</th><th>Service</th><th>DELETE</th><th>UPDATE</th></tr>";
 
         while ($row = $DATA->fetch(PDO::FETCH_ASSOC)) {
@@ -31,5 +31,12 @@
     } catch (PDOException $e) {
         echo 'failed ' . $e->getMessage();
     }
+
+
+
+    echo "<a href='ADD.php'><h1 style='font-size: 24px; text-align: center;'>CLICK IF YOU WANT TO ADD A NEW MEMBER</h1></a>";
+
+
+
 
 ?>
