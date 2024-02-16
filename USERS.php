@@ -11,7 +11,7 @@
         $DATA->execute();
 
         echo "<table border='1'style='display: flex; justify-content: center; '>";
-        echo "<tr><th>Matricule</th><th>Prenom</th><th>Nom</th><th>Date De Naissance</th><th>Fonction</th><th>Salaire</th><th>Service</th><th>dateEmbauche</th><th>DELETE</th><th>UPDATE</th></tr>";
+        echo "<tr><th>Matricule</th><th>Prenom</th><th>Nom</th><th>Date De Naissance</th><th>Fonction</th><th>Salaire</th><th>Service</th><th>DateEmbauche</th><th>DELETE</th><th>UPDATE</th></tr>";
 
         while ($row = $DATA->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
