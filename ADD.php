@@ -54,9 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $service = $_POST['service'];
     $dateEmbauche = $_POST['dateEmbauche'];
 
-    $updateDATA = $DB->prepare("INSERT INTO employe (nom, prenom, dateDeNaissance, fonction, salaire, IdService, dateEmbauche) VALUES (:nom, :prenom, :dateDeNaissance, :fonction, :salaire, :IdService, :dateEmbauche)");
-    $updateDATA->bindParam(':nom', $nom);
+    $updateDATA = $DB->prepare("INSERT INTO employe (prenom,nom,dateDeNaissance, fonction, salaire, IdService, dateEmbauche) VALUES (:nom, :prenom, :dateDeNaissance, :fonction, :salaire, :IdService, :dateEmbauche)");
     $updateDATA->bindParam(':prenom', $prenom);
+    $updateDATA->bindParam(':nom', $nom);
     $updateDATA->bindParam(':dateDeNaissance', $dateDeNaissance);
     $updateDATA->bindParam(':fonction', $fonction);
     $updateDATA->bindParam(':salaire', $salaire);
